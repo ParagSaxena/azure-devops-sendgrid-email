@@ -1,0 +1,144 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "35af2c8e-d27e-4450-bb4d-6091c2223b78",
+  "name": "SendGridEmail",
+  "friendlyName": "Send Email via SendGrid",
+  "description": "Sends an email through SendGrid with optional file attachments (file picker, variables, and wildcard patterns supported).",
+  "helpMarkDown": "Sends email using the SendGrid v3 API. Attachments can be selected with the file picker, provided via pipeline variables, or matched with wildcard patterns.",
+  "category": "Utility",
+  "author": "Phoenix DevOps",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 1
+  },
+  "instanceNameFormat": "Send email: $(subject)",
+  "groups": [
+    {
+      "name": "attachments",
+      "displayName": "Attachments",
+      "isExpanded": true
+    },
+    {
+      "name": "advanced",
+      "displayName": "Advanced",
+      "isExpanded": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "apiKey",
+      "type": "string",
+      "label": "SendGrid API Key",
+      "required": true,
+      "helpMarkDown": "Your SendGrid API key. **Always use a secret variable**, e.g. `$(SendGridApiKey)`, defined in pipeline variables or a variable group with the lock icon enabled. Never paste the key in plain text."
+    },
+    {
+      "name": "fromAddress",
+      "type": "string",
+      "label": "From address",
+      "required": true,
+      "helpMarkDown": "Sender email address. Must be a verified sender or authenticated domain in your SendGrid account."
+    },
+    {
+      "name": "fromName",
+      "type": "string",
+      "label": "From display name",
+      "required": false,
+      "helpMarkDown": "Optional display name shown as the sender, e.g. `Build Pipeline`."
+    },
+    {
+      "name": "toAddresses",
+      "type": "string",
+      "label": "To",
+      "required": true,
+      "helpMarkDown": "Recipient email address(es), separated by comma or semicolon."
+    },
+    {
+      "name": "ccAddresses",
+      "type": "string",
+      "label": "Cc",
+      "required": false,
+      "helpMarkDown": "Cc address(es), separated by comma or semicolon."
+    },
+    {
+      "name": "bccAddresses",
+      "type": "string",
+      "label": "Bcc",
+      "required": false,
+      "helpMarkDown": "Bcc address(es), separated by comma or semicolon."
+    },
+    {
+      "name": "subject",
+      "type": "string",
+      "label": "Subject",
+      "required": true,
+      "helpMarkDown": "Email subject. Pipeline variables are supported, e.g. `Build $(Build.BuildNumber) finished`."
+    },
+    {
+      "name": "body",
+      "type": "multiLine",
+      "label": "Body",
+      "required": false,
+      "properties": {
+        "resizable": "true",
+        "rows": "6"
+      },
+      "helpMarkDown": "Email body. Plain text by default; enable **Body is HTML** to send HTML."
+    },
+    {
+      "name": "bodyIsHtml",
+      "type": "boolean",
+      "label": "Body is HTML",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "If checked, the body is sent as `text/html`, otherwise as `text/plain`."
+    },
+    {
+      "name": "attachment",
+      "type": "filePath",
+      "label": "Attachment",
+      "required": false,
+      "groupName": "attachments",
+      "helpMarkDown": "A single file to attach. Use the picker (…) to browse the repository, or provide a variable-based path such as `$(Build.ArtifactStagingDirectory)/report.pdf`."
+    },
+    {
+      "name": "additionalAttachments",
+      "type": "multiLine",
+      "label": "Additional attachments (wildcards)",
+      "required": false,
+      "groupName": "attachments",
+      "properties": {
+        "resizable": "true",
+        "rows": "3"
+      },
+      "helpMarkDown": "One pattern per line, relative to `$(System.DefaultWorkingDirectory)` or absolute. Wildcards are supported, e.g. `drop/**/*.zip` or `$(Build.ArtifactStagingDirectory)/logs/*.txt`."
+    },
+    {
+      "name": "failIfNoAttachmentsFound",
+      "type": "boolean",
+      "label": "Fail if attachment patterns match no files",
+      "defaultValue": "true",
+      "required": false,
+      "groupName": "attachments",
+      "helpMarkDown": "If checked, the task fails when 'Additional attachments' patterns are provided but match no files. Uncheck to send the email anyway."
+    },
+    {
+      "name": "timeoutSeconds",
+      "type": "string",
+      "label": "Request timeout (seconds)",
+      "defaultValue": "60",
+      "required": false,
+      "groupName": "advanced",
+      "helpMarkDown": "HTTP timeout for the SendGrid API call."
+    }
+  ],
+  "execution": {
+    "Node16": {
+      "target": "index.js"
+    },
+    "Node20_1": {
+      "target": "index.js"
+    }
+  }
+}

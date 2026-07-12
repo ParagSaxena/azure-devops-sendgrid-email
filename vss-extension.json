@@ -1,0 +1,54 @@
+{
+  "manifestVersion": 1,
+  "id": "sendgrid-email-with-attachments",
+  "version": "1.0.1",
+  "name": "SendGrid Email with Attachments",
+  "publisher": "phoenix-enterprise",
+  "description": "Send email from Azure Pipelines via SendGrid with attachments: file picker, variable paths, and wildcard patterns. Works in Classic and YAML pipelines on any agent OS.",
+  "public": true,
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "tags": [
+    "sendgrid",
+    "email",
+    "attachments",
+    "notification",
+    "mail"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "content": {
+    "details": {
+      "path": "README.md"
+    }
+  },
+  "links": {
+    "license": {
+      "uri": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "files": [
+    {
+      "path": "sendgrid-task"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "sendgrid-email-task",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "sendgrid-task"
+      }
+    }
+  ]
+}

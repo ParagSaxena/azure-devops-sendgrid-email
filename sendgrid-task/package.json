@@ -1,0 +1,10 @@
+{
+  "name": "sendgrid-email-task",
+  "version": "1.0.0",
+  "description": "Azure Pipelines task that sends email via SendGrid with file attachments.",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "azure-pipelines-task-lib": "^4.17.3"
+  }
+}
