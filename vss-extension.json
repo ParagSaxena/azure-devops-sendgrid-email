@@ -30,9 +30,19 @@
     }
   },
   "links": {
+    "getstarted": {
+      "uri": "https://github.com/ParagSaxena/azure-devops-sendgrid-email"
+    },
+    "support": {
+      "uri": "https://github.com/ParagSaxena/azure-devops-sendgrid-email/issues"
+    },
     "license": {
-      "uri": "https://opensource.org/licenses/MIT"
+      "uri": "https://github.com/ParagSaxena/azure-devops-sendgrid-email/blob/main/LICENSE"
     }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/ParagSaxena/azure-devops-sendgrid-email"
   },
   "files": [
     {

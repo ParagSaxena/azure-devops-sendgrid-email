@@ -88,6 +88,12 @@ To publish to the Visual Studio Marketplace:
 
 Remember to bump **both** the extension version (`vss-extension.json`) and the task version (`task.json`) on every update — the Marketplace rejects re-uploads of the same version, and agents cache tasks by version.
 
+## Support this project
+
+If this extension saves you time, consider [sponsoring on GitHub](https://github.com/sponsors/ParagSaxena) — it keeps the extension maintained and free.
+
+Found a bug or have a feature request? [Open an issue](https://github.com/ParagSaxena/azure-devops-sendgrid-email/issues).
+
 ## License
 
-MIT
+[MIT](https://github.com/ParagSaxena/azure-devops-sendgrid-email/blob/main/LICENSE)
