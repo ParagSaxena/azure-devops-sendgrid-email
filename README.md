@@ -90,9 +90,9 @@ Remember to bump **both** the extension version (`vss-extension.json`) and the t
 
 ## Support this project
 
-If this extension saves you time, consider [sponsoring on GitHub](https://github.com/sponsors/ParagSaxena) — it keeps the extension maintained and free.
-
 Found a bug or have a feature request? [Open an issue](https://github.com/ParagSaxena/azure-devops-sendgrid-email/issues).
+
+Starring the [GitHub repository](https://github.com/ParagSaxena/azure-devops-sendgrid-email) helps other Azure DevOps users find the task.
 
 ## License
 
