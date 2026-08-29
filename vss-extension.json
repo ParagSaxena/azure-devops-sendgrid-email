@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "sendgrid-email-with-attachments",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "SendGrid Email with Attachments",
   "publisher": "phoenix-enterprise",
   "description": "Send email from Azure Pipelines via SendGrid with attachments: file picker, variable paths, and wildcard patterns. Works in Classic and YAML pipelines on any agent OS.",
